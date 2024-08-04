@@ -5,8 +5,9 @@ This algorithm is an attempt to match students in a group of 4 to 6 people with 
 
 ##How the weights are determined. 
 
-o	Intra-category connections: Majors within the same broad category (e.g., STEM, Life Sciences) are connected with a weight of 0.7, indicating strong relationships. 
-o	Inter-category connections: Specific connections between related majors across categories are defined in the interdisciplinary_connections list. The weights for these connections range from 0.3 to 0.9, based on the perceived strength of the relationship.
+* Intra-category connections: Majors within the same broad category (e.g., STEM, Life Sciences) are connected with a weight of 0.7, indicating strong relationships. 
+
+* Inter-category connections: Specific connections between related majors across categories are defined in the interdisciplinary_connections list. The weights for these connections range from 0.3 to 0.9, based on the perceived strength of the relationship.
 
 1)	The weights range from 0 to 1, where 1 represents the strongest possible connection and 0 represents no connection.
 2)	Within categories (0.8): 
@@ -25,6 +26,7 @@ o	Inter-category connections: Specific connections between related majors across
 -	Majors with no direct edge between them are considered unconnected in this model.
 
 ##Interest tabulation:
+
 ####Primary Interest
 >> p_interests = set(student1['Primary Interests']) & set(student2['Primary Interests']) score += >>len(p_interests) * 0.5
 1)	set(student1['Primary Interests']) creates a set of the primary interests for student1. 
@@ -43,9 +45,10 @@ o	Inter-category connections: Specific connections between related majors across
 The rationale behind this scoring:
 1.	Both primary and secondary interests contribute to the compatibility score, encouraging diverse but related interests in groups.
 2.	Secondary interests are weighted more heavily than primary interests. This might be because: 
-o	Secondary interests could represent a broader range of topics, increasing the chance of finding common ground.
-o	It encourages grouping students with diverse primary interests (possibly related to their majors) but common secondary interests, promoting interdisciplinary connections.
-Timezone
+  o	Secondary interests could represent a broader range of topics, increasing the chance of finding common ground.
+  o	It encourages grouping students with diverse primary interests (possibly related to their majors) but common secondary     interests, promoting interdisciplinary connections.
+
+#Timezone
 1) Calculates the time difference as before. 
 2) If the time difference is between 1 and 3 hours: 
 •	Adds a small bonus (1 point) to the score. This encourages some time zone diversity while still keeping times close.
